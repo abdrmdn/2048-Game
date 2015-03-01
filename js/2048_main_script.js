@@ -12,8 +12,8 @@
 	var cols=4;
 
 	//block size
-	var size='50px';
-	var blocks_size='50';
+	var size='51px';
+	var blocks_size='53';
 
 	//numbers array library
 	var numbers_allowed = new Array(2);
@@ -26,7 +26,8 @@
 	var moves=[];
 
 	//speed
-	transition_speed=350;
+	transition_speed=200;
+
 // /////////////////
 // /////////////////
 
@@ -58,11 +59,16 @@ function initializeGame(numberOfRowBlock)
 
 function checkSimilarity(current_block,next_block)
 {
+	if(next_block.hasClass('newCombinedValue') || current_block.hasClass('newCombinedValue'))
+	{
+		//means cant add this to a new combined number, need to wait for next round
+		return 0;
+	}
 	if(next_block.attr('value')==current_block.attr('value'))
 	{
 		new_val=next_block.attr('value')*2;
-		current_block.attr('value',new_val);
-		next_block.attr('value',new_val);
+		current_block.attr('value',new_val).addClass('newCombinedValue').addClass('toRemove');
+		next_block.attr('value',new_val).addClass('newCombinedValue');
 
 		return 1;	
 	}
@@ -83,7 +89,7 @@ function moveRight()
 					while(browser_index<cols && !free_places_boolBoard[i][browser_index])
 						{browser_index++;moves_exist=true;}
 					browser_index--;
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index]=true;
+					
 					next_block=$('.Game_Block .coords-'+i+'-'+(browser_index+1));
 					if(browser_index<cols)
 					{
@@ -94,6 +100,7 @@ function moveRight()
 							{browser_index++;moves_exist=true;}
 						}
 					}
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index-1]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+i+'-'+browser_index;
 					updateBoardPlaces();
@@ -116,7 +123,7 @@ function moveLeft()
 					while(browser_index>-1 && !free_places_boolBoard[i][browser_index])
 						{browser_index--;moves_exist=true;}
 					browser_index++;
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index]=true;
+					
 					next_block=$('.Game_Block .coords-'+i+'-'+(browser_index-1));
 					if(browser_index>-1)
 					{
@@ -127,6 +134,7 @@ function moveLeft()
 							{browser_index--;moves_exist=true;}
 						}
 					}
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index+1]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+i+'-'+browser_index;
 					updateBoardPlaces();
@@ -148,7 +156,7 @@ function moveUp()
 					while(browser_index>-1 && !free_places_boolBoard[browser_index][j])
 						{browser_index--;moves_exist=true;}
 					browser_index++;
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][i]=true;
+					
 					next_block=$('.Game_Block .coords-'+(browser_index-1)+'-'+j);
 					if(browser_index>-1)
 					{
@@ -159,6 +167,7 @@ function moveUp()
 							{browser_index--;moves_exist=true;}
 						}
 					}
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index+1][i]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
 					updateBoardPlaces();
@@ -180,7 +189,7 @@ function moveDown()
 					while(browser_index<cols && !free_places_boolBoard[browser_index][j])
 						{browser_index++;moves_exist=true;}
 					browser_index--;
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][j]=true;
+					
 					next_block=$('.Game_Block .coords-'+(browser_index+1)+'-'+j);
 					if(browser_index<cols)
 					{
@@ -192,6 +201,7 @@ function moveDown()
 						}	
 
 					}
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index-1][j]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
 					updateBoardPlaces();
@@ -203,8 +213,13 @@ function updateBoardPlaces()
 {
 	for (var key_i in moves){
 		obj=$('.Game_Block .'+key_i).removeClass(key_i).addClass(moves[key_i]);
-		if($('.'+moves[key_i]).length>1){$($('.'+moves[key_i])[0]).fadeOut(transition_speed*2);}//function() { $(this).remove(); }
-		$('.'+moves[key_i]).text($('.'+moves[key_i]).attr('value'));
+		if($('.'+moves[key_i]).length>1){
+			setTimeout(function(){
+				$('.toRemove').remove();
+			 	$('.newCombinedValue').text($('.newCombinedValue').attr('value')).removeClass('newCombinedValue');},transition_speed);
+			//$($('.'+moves[key_i])[1]).addClass('toRemove').fadeOut(transition_speed*2,function(){$('.toRemove').remove();});
+		}
+		//$('.'+moves[key_i]).text($('.'+moves[key_i]).attr('value'));
 		console.log(key_i+" to "+moves[key_i]);
 		blockcls=moves[key_i].split('-');
 		obj.animate({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed);
@@ -226,7 +241,7 @@ function moveBlocks(direction)
 	{	moveLeft();		}
 	else
 	{}
-	updateBoardPlaces();
+	//updateBoardPlaces();
 	updateMapVacancies();
 }
 
@@ -256,7 +271,7 @@ function generateRandomNumBlock()
 	clone.addClass('toGenerate');
 
 	//setTimeout(function(){},transition_speed);
-	clone.animate({'top':(blockcls[1]*50)+'px', 'left':(blockcls[2]*50)+'px'},transition_speed,function(){$('.toGenerate').removeClass('toGenerate').show();});
+	clone.animate({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed,function(){$('.toGenerate').removeClass('toGenerate').show();});
 	//update the free places in the board
 	updateMapVacancies();
 }

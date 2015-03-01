@@ -1,10 +1,13 @@
-
+body{}
 
 .Game_Block{
 	position: relative;
-	background-color: #eee;
-	width: 200px;
-	height: 200px;
+	background-color: rgba(238, 238, 238, 0.4);
+	width: 213px;
+	height: 213px;
+	border: 1px solid rgba(128, 128, 128, 0.57);
+	margin: auto;
+	top:150px;
 }
 
 .num_block{
@@ -17,25 +20,26 @@
 	color: white;
 	text-align: center;
 	padding-top: 13px;
-	margin: 5px;
-	border: 1px solid white;
+	margin: 1px;
+	/*border: 1px solid white;*/
+	border-radius: 4px;
+	box-shadow: 1px 1px 1px #888888;
 }
 
 
 
-.bg-color-2{background-color: red;}
-.bg-color-4{background-color: black;}
-.bg-color-8{background-color: gray;}
-.bg-color-16{background-color: yellow;}
-.bg-color-32{background-color: gray;}
-.bg-color-64{background-color: gray;}
-.bg-color-128{background-color: gray;}
-.bg-color-264{background-color: gray;}
-.bg-color-512{background-color: gray;}
-.bg-color-1024{background-color: gray;}
-.bg-color-2048{background-color: gray;}
-.bg-color-4096{background-color: gray;}
-
+[value="2"]{background-color: #C1F4C5;}
+[value="4"]{background-color: #8CEFFF;}
+[value="8"]{background-color: #FEC9C9;}
+[value="16"]{background-color: #C1E7F3;}
+[value="32"]{background-color: #E4C1F2;}
+[value="64"]{background-color: #D1B0CD;}
+[value="128"]{background-color: #B4C3D1;}
+[value="264"]{background-color: #6CE0A8;}
+[value="512"]{background-color: #45FF67;}
+[value="1024"]{background-color: #AAD0B1;}
+[value="2048"]{background-color: gray;}
+[value="4096"]{background-color: gray;}
 
 
 /*.coords-0-0{top:0px; left: 0px;}
