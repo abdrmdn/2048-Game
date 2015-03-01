@@ -13,6 +13,7 @@
 
 	//block size
 	var size='50px';
+	var blocks_size='50';
 
 	//numbers array library
 	var numbers_allowed = new Array(2);
@@ -86,7 +87,12 @@ function moveRight()
 					next_block=$('.Game_Block .coords-'+i+'-'+(browser_index+1));
 					if(browser_index<cols)
 					{
-						browser_index= browser_index + checkSimilarity(current_block,next_block);
+						if( checkSimilarity(current_block,next_block) == 1)
+						{
+							browser_index++;
+							while(browser_index<cols && !free_places_boolBoard[i][browser_index])
+							{browser_index++;moves_exist=true;}
+						}
 					}
 
 					moves['coords-'+i+'-'+j]='coords-'+i+'-'+browser_index;
@@ -114,7 +120,12 @@ function moveLeft()
 					next_block=$('.Game_Block .coords-'+i+'-'+(browser_index-1));
 					if(browser_index>-1)
 					{
-						browser_index= browser_index - checkSimilarity(current_block,next_block);
+						if(checkSimilarity(current_block,next_block)==1)
+						{
+							browser_index--;
+							while(browser_index>-1 && !free_places_boolBoard[i][browser_index])
+							{browser_index--;moves_exist=true;}
+						}
 					}
 
 					moves['coords-'+i+'-'+j]='coords-'+i+'-'+browser_index;
@@ -125,6 +136,38 @@ function moveLeft()
 }
 //moveUp function
 function moveUp()
+{
+	for (var i =1; i < rows; i++) {
+		for (var j =cols-1; j >= 0; j--) {
+				if(free_places_boolBoard[i][j])
+				{
+					moves_exist=false;
+					browser_index=i-1;
+					current_block=$('.Game_Block .coords-'+i+'-'+j);
+					//skip empty spaces
+					while(browser_index>-1 && !free_places_boolBoard[browser_index][j])
+						{browser_index--;moves_exist=true;}
+					browser_index++;
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][i]=true;
+					next_block=$('.Game_Block .coords-'+(browser_index-1)+'-'+j);
+					if(browser_index>-1)
+					{
+						if(checkSimilarity(current_block,next_block)==1)
+						{
+							browser_index--;
+							while(browser_index>-1 && !free_places_boolBoard[browser_index][j])
+							{browser_index--;moves_exist=true;}
+						}
+					}
+
+					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
+					updateBoardPlaces();
+				}
+			};
+		};
+}
+//moveDown function
+function moveDown()
 {
 	for (var i =rows-2; i >= 0; i--) {
 			for (var j =cols-1; j >= 0; j--) {
@@ -141,7 +184,13 @@ function moveUp()
 					next_block=$('.Game_Block .coords-'+(browser_index+1)+'-'+j);
 					if(browser_index<cols)
 					{
-						browser_index= browser_index + checkSimilarity(current_block,next_block);
+						if(checkSimilarity(current_block,next_block)==1)
+						{
+							browser_index++;
+							while(browser_index<cols && !free_places_boolBoard[browser_index][j])
+							{browser_index++;moves_exist=true;}
+						}	
+
 					}
 
 					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
@@ -149,11 +198,6 @@ function moveUp()
 				}
 			};
 		};
-}
-//moveDown function
-function moveDown()
-{
-	moveRight();
 }
 function updateBoardPlaces()
 {
@@ -163,7 +207,7 @@ function updateBoardPlaces()
 		$('.'+moves[key_i]).text($('.'+moves[key_i]).attr('value'));
 		console.log(key_i+" to "+moves[key_i]);
 		blockcls=moves[key_i].split('-');
-		obj.animate({'top':(blockcls[1]*50)+'px', 'left':(blockcls[2]*50)+'px'},transition_speed);
+		obj.animate({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed);
 	};
 	moves=[];
 }
@@ -211,7 +255,8 @@ function generateRandomNumBlock()
 	free_places_boolBoard[blockcls[1]][blockcls[2]]=true;
 	clone.addClass('toGenerate');
 
-	setTimeout(function(){$('.toGenerate').removeClass('toGenerate').animate({'top':(blockcls[1]*50)+'px', 'left':(blockcls[2]*50)+'px'},2).show();},transition_speed);
+	//setTimeout(function(){},transition_speed);
+	clone.animate({'top':(blockcls[1]*50)+'px', 'left':(blockcls[2]*50)+'px'},transition_speed,function(){$('.toGenerate').removeClass('toGenerate').show();});
 	//update the free places in the board
 	updateMapVacancies();
 }
