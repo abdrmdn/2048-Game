@@ -1,0 +1,65 @@
+
+
+.Game_Block{
+	position: relative;
+	background-color: #eee;
+	width: 250px;
+	height: 250px;
+}
+
+.num_block{
+	width: 50px;
+	height: 37px;
+	position: absolute;
+	top:0px;
+	right:0px;
+	font-size: 24px;
+	color: white;
+	text-align: center;
+	padding-top: 13px;
+	margin: 5px;
+	border: 1px solid white;
+}
+
+
+
+.bg-color-2{background-color: red;}
+.bg-color-4{background-color: black;}
+.bg-color-8{background-color: gray;}
+.bg-color-16{background-color: yellow;}
+.bg-color-32{background-color: gray;}
+.bg-color-64{background-color: gray;}
+.bg-color-128{background-color: gray;}
+.bg-color-264{background-color: gray;}
+.bg-color-512{background-color: gray;}
+.bg-color-1024{background-color: gray;}
+.bg-color-2048{background-color: gray;}
+.bg-color-4096{background-color: gray;}
+
+
+
+.coords-0-0{top:0px; left: 0px;}
+.coords-0-1{top:0px; left: 50px;}
+.coords-0-2{top:0px; left: 100px;}
+.coords-0-3{top:0px; left: 150px;}
+
+
+.coords-1-0{top:50px; left: 0px;}
+.coords-1-1{top:50px; left: 50px;}
+.coords-1-2{top:50px; left: 100px;}
+.coords-1-3{top:50px; left: 150px;}
+
+
+
+.coords-2-0{top:100px; left: 0px;}
+.coords-2-1{top:100px; left: 50px;}
+.coords-2-2{top:100px; left: 100px;}
+.coords-2-3{top:100px; left: 150px;}
+
+
+.coords-3-0{top:150px; left:  0px;}
+.coords-3-1{top:150px; left:  50px;}
+.coords-3-2{top:150px; left:  100px;}
+.coords-3-3{top:150px; left:  150px;}
+
+
