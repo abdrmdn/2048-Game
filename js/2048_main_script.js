@@ -69,7 +69,6 @@ function initializeGame(numberOfRowBlock)
 	//generate two number blocks
 	generateRandomNumBlock();
 	generateRandomNumBlock();
-	for(i=0;i<14;i++){generateRandomNumBlock();}
 }
 
 function checkSimilarity(current_block,next_block)
