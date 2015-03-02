@@ -12,8 +12,8 @@
 	var cols=4;
 
 	//block size
-	var size='51px';
-	var blocks_size='53';
+	var size='66px';
+	var blocks_size='68';
 
 	//numbers array library
 	var numbers_allowed = new Array(2);
@@ -171,7 +171,7 @@ function moveUp()
 						}
 					}
 					browser_index++;
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][i]=true;
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][j]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
 					updateBoardPlaces();
@@ -182,7 +182,7 @@ function moveUp()
 //moveDown function
 function moveDown()
 {
-	for (var i =rows-2; i >= 0; i--) {
+	for (var i =rows-1; i >= 0; i--) {
 			for (var j =cols-1; j >= 0; j--) {
 				if(free_places_boolBoard[i][j])
 				{

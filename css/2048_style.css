@@ -1,33 +1,49 @@
-body{}
+body {
+background-color: rgba(234, 230, 230, 0.03);
+}
+
+* {
+-webkit-font-smoothing: antialiased;
+}
 
 .Game_Block{
 	position: relative;
 	background-color: rgba(238, 238, 238, 0.4);
-	width: 213px;
-	height: 213px;
-	border: 1px solid rgba(128, 128, 128, 0.57);
+	width: 273px;
+	height: 273px;
+	border: 3px solid rgba(128, 128, 128, 0.57);
 	margin: auto;
-	top:150px;
-}
-
-.num_block{
-	width: 50px;
-	height: 37px;
-	position: absolute;
-	top:0px;
-	right:0px;
-	font-size: 24px;
-	color: white;
-	text-align: center;
-	padding-top: 13px;
-	margin: 1px;
-	/*border: 1px solid white;*/
+	top: 150px;
 	border-radius: 4px;
-	box-shadow: 1px 1px 1px #888888;
 }
 
+.num_block {
+width: 65px;
+height: 52px;
+position: absolute;
+top: 0px;
+right: 0px;
+font-size: 39px;
+color: #FFF;
+text-align: center;
+padding-top: 13px;
+margin: 1px;
+/* border: 1px solid #FFF; */
+border-radius: 5px;
+/* box-shadow: 1px 1px 1px #888; */
+}
+.doublesize{
+	width: 3em;
+	height: 2em;
+	font-size: 2em;
+	padding-top: 1em;
+}
 
-
+.doubleEverything{
+position: absolute;
+top: 10px;
+left:10px;
+}
 [value="2"]{background-color: #C1F4C5;}
 [value="4"]{background-color: #8CEFFF;}
 [value="8"]{background-color: #FEC9C9;}
