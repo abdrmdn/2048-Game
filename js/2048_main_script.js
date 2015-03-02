@@ -86,21 +86,23 @@ function moveRight()
 					browser_index=j+1;
 					current_block=$('.Game_Block .coords-'+i+'-'+j);
 					//skip empty spaces
-					while(browser_index<cols && !free_places_boolBoard[i][browser_index])
+					while(browser_index<(cols) && !free_places_boolBoard[i][browser_index])
 						{browser_index++;moves_exist=true;}
-					browser_index--;
 					
-					next_block=$('.Game_Block .coords-'+i+'-'+(browser_index+1));
-					if(browser_index<cols)
+					
+					if((browser_index)<(cols))
 					{
-						if( checkSimilarity(current_block,next_block) == 1)
+						next_block=$('.Game_Block .coords-'+i+'-'+(browser_index));
+					
+						if(checkSimilarity(current_block,next_block) == 1)
 						{
 							browser_index++;
-							while(browser_index<cols && !free_places_boolBoard[i][browser_index])
+							while(browser_index<(cols) && !free_places_boolBoard[i][browser_index])
 							{browser_index++;moves_exist=true;}
 						}
 					}
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index-1]=true;
+					browser_index--;
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+i+'-'+browser_index;
 					updateBoardPlaces();
@@ -122,11 +124,11 @@ function moveLeft()
 					//skip empty spaces
 					while(browser_index>-1 && !free_places_boolBoard[i][browser_index])
 						{browser_index--;moves_exist=true;}
-					browser_index++;
 					
-					next_block=$('.Game_Block .coords-'+i+'-'+(browser_index-1));
-					if(browser_index>-1)
+
+					if((browser_index)>-1)
 					{
+						next_block=$('.Game_Block .coords-'+i+'-'+(browser_index));
 						if(checkSimilarity(current_block,next_block)==1)
 						{
 							browser_index--;
@@ -134,7 +136,8 @@ function moveLeft()
 							{browser_index--;moves_exist=true;}
 						}
 					}
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index+1]=true;
+					browser_index++;
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[i][browser_index]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+i+'-'+browser_index;
 					updateBoardPlaces();
@@ -155,11 +158,11 @@ function moveUp()
 					//skip empty spaces
 					while(browser_index>-1 && !free_places_boolBoard[browser_index][j])
 						{browser_index--;moves_exist=true;}
-					browser_index++;
 					
-					next_block=$('.Game_Block .coords-'+(browser_index-1)+'-'+j);
-					if(browser_index>-1)
+					if((browser_index)>-1)
 					{
+						next_block=$('.Game_Block .coords-'+(browser_index)+'-'+j);
+
 						if(checkSimilarity(current_block,next_block)==1)
 						{
 							browser_index--;
@@ -167,7 +170,8 @@ function moveUp()
 							{browser_index--;moves_exist=true;}
 						}
 					}
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index+1][i]=true;
+					browser_index++;
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][i]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
 					updateBoardPlaces();
@@ -186,22 +190,22 @@ function moveDown()
 					browser_index=i+1;
 					current_block=$('.Game_Block .coords-'+i+'-'+j);
 					//skip empty spaces
-					while(browser_index<cols && !free_places_boolBoard[browser_index][j])
+					while(browser_index<(cols) && !free_places_boolBoard[browser_index][j])
 						{browser_index++;moves_exist=true;}
-					browser_index--;
 					
-					next_block=$('.Game_Block .coords-'+(browser_index+1)+'-'+j);
-					if(browser_index<cols)
+					
+					if((browser_index)<(cols))
 					{
+						next_block=$('.Game_Block .coords-'+(browser_index)+'-'+j);
 						if(checkSimilarity(current_block,next_block)==1)
 						{
 							browser_index++;
-							while(browser_index<cols && !free_places_boolBoard[browser_index][j])
+							while(browser_index<(cols) && !free_places_boolBoard[browser_index][j])
 							{browser_index++;moves_exist=true;}
 						}	
-
 					}
-					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index-1][j]=true;
+					browser_index--;
+					free_places_boolBoard[i][j]=false;free_places_boolBoard[browser_index][j]=true;
 
 					moves['coords-'+i+'-'+j]='coords-'+browser_index+'-'+j;
 					updateBoardPlaces();
@@ -216,7 +220,8 @@ function updateBoardPlaces()
 		if($('.'+moves[key_i]).length>1){
 			setTimeout(function(){
 				$('.toRemove').remove();
-			 	$('.newCombinedValue').text($('.newCombinedValue').attr('value')).removeClass('newCombinedValue');},transition_speed);
+				//$('.newCombinedValue').text($('.newCombinedValue').attr('value')).removeClass('newCombinedValue');
+			 	},transition_speed);
 			//$($('.'+moves[key_i])[1]).addClass('toRemove').fadeOut(transition_speed*2,function(){$('.toRemove').remove();});
 		}
 		//$('.'+moves[key_i]).text($('.'+moves[key_i]).attr('value'));
@@ -241,6 +246,7 @@ function moveBlocks(direction)
 	{	moveLeft();		}
 	else
 	{}
+$('.newCombinedValue').text($('.newCombinedValue').attr('value')).removeClass('newCombinedValue');
 	//updateBoardPlaces();
 	updateMapVacancies();
 }
