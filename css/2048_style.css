@@ -1,17 +1,18 @@
 body {
-background-color: rgba(234, 230, 230, 0.03);
+background-color: rgb(248, 248, 248);
 }
 
 * {
 -webkit-font-smoothing: antialiased;
+font-family: 'Megrim', cursive;
 }
 
 .Game_Block{
 	position: relative;
-	background-color: rgba(238, 238, 238, 0.4);
-	width: 273px;
-	height: 273px;
-	border: 3px solid rgba(128, 128, 128, 0.57);
+	background-color: #fff;
+	width: 283px;
+	height: 283px;
+	border: 2px solid rgba(128, 128, 128, 0.57);
 	margin: auto;
 	top: 150px;
 	border-radius: 4px;
@@ -19,19 +20,19 @@ background-color: rgba(234, 230, 230, 0.03);
 
 .num_block {
 width: 65px;
-height: 52px;
+height: 57px;
 position: absolute;
 top: 0px;
 right: 0px;
-font-size: 39px;
+font-size: 43px;
 color: #FFF;
 text-align: center;
-padding-top: 13px;
-margin: 1px;
-/* border: 1px solid #FFF; */
+padding-top: 8px;
+margin: 6px;
 border-radius: 5px;
 /* box-shadow: 1px 1px 1px #888; */
 }
+
 .doublesize{
 	width: 3em;
 	height: 2em;
@@ -44,7 +45,8 @@ position: absolute;
 top: 10px;
 left:10px;
 }
-[value="2"]{background-color: #C1F4C5;}
+/*pallate 1*/
+/*[value="2"]{background-color: #C1F4C5;}
 [value="4"]{background-color: #8CEFFF;}
 [value="8"]{background-color: #FEC9C9;}
 [value="16"]{background-color: #C1E7F3;}
@@ -54,8 +56,23 @@ left:10px;
 [value="264"]{background-color: #6CE0A8;}
 [value="512"]{background-color: #45FF67;}
 [value="1024"]{background-color: #AAD0B1;}
-[value="2048"]{background-color: gray;}
-[value="4096"]{background-color: gray;}
+[value="2048"]{background-color: gray;}#FE0557
+[value="4096"]{background-color: gray;}*/
+
+/*pallate 2*/
+[value="2"]{background-color: #0AABBA;}
+[value="4"]{background-color: #DE6262;}
+[value="8"]{background-color: #FE8B05;}
+[value="16"]{background-color: #CC333F;}
+[value="32"]{background-color: #EB6841;}
+[value="64"]{background-color: #336666;}
+[value="128"]{background-color: #FFC27F;}
+[value="264"]{background-color: #F88863;}
+[value="512"]{background-color: #EDD269;}
+[value="1024"]{background-color: #452B72;}
+[value="2048"]{background-color: #F9BA15;}
+[value="4096"]{background-color: #56416C;}
+
 
 
 /*.coords-0-0{top:0px; left: 0px;}

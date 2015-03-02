@@ -69,6 +69,9 @@ function checkSimilarity(current_block,next_block)
 		new_val=next_block.attr('value')*2;
 		current_block.attr('value',new_val).addClass('newCombinedValue').addClass('toRemove');
 		next_block.attr('value',new_val).addClass('newCombinedValue');
+		next_block.animate({
+        width: '70px',height: '62px',margin:'1px'},(transition_speed/4),function(){
+		$(this).animate({width: '65px',height: '57px',margin:'6px'},(transition_speed/4));});
 
 		return 1;	
 	}
