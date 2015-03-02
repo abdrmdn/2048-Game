@@ -31,6 +31,7 @@
 	//finish count 
 	finish_count=0
 	touched=false;
+	moved_this_turn=false;
 // /////////////////
 // /////////////////
 
@@ -235,6 +236,9 @@ function moveDown()
 function updateBoardPlaces()
 {
 	for (var key_i in moves){
+		//to check if no new moves were made this turn
+		if(key_i != moves[key_i]){moved_this_turn=true;}
+
 		obj=$('.Game_Block .'+key_i).removeClass(key_i).addClass(moves[key_i]);
 		if($('.'+moves[key_i]).length>1){
 			setTimeout(function(){
@@ -336,12 +340,18 @@ function process_game(direction)
 		gameOver();
 		return;
 	}
+
 	touched=false;
+	
 	//1.do move action
 	moveBlocks(direction);
 
-	//2.generate number block
-	generateRandomNumBlock();
+	if(moved_this_turn)
+	{
+		moved_this_turn=false;
+		//2.generate number block
+		generateRandomNumBlock();
+	}
 
 }
 
