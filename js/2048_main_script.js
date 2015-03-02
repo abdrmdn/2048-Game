@@ -28,6 +28,9 @@
 	//speed
 	transition_speed=200;
 
+	//finish count 
+	finish_count=0
+	touched=false;
 // /////////////////
 // /////////////////
 
@@ -66,6 +69,7 @@ function initializeGame(numberOfRowBlock)
 	//generate two number blocks
 	generateRandomNumBlock();
 	generateRandomNumBlock();
+	for(i=0;i<14;i++){generateRandomNumBlock();}
 }
 
 function checkSimilarity(current_block,next_block)
@@ -77,15 +81,15 @@ function checkSimilarity(current_block,next_block)
 	}
 	if(next_block.attr('value')==current_block.attr('value'))
 	{
-		old_value=next_block.attr('value');
+		old_value=parseInt(next_block.attr('value'));
 		new_val=old_value*2;
-		numbers_allowed.push(old_value);
+		numbers_allowed.push(old_value);if(old_value>2)numbers_allowed.push(old_value/2);
 		current_block.attr('value',new_val).addClass('newCombinedValue').addClass('toRemove');
 		next_block.attr('value',new_val).addClass('newCombinedValue');
 		next_block.animate({
         width: '70px',height: '62px',margin:'1px'},(transition_speed/4),function(){
 		$(this).animate({width: '65px',height: '57px',margin:'6px'},(transition_speed/4));});
-
+		touched=true;
 		return 1;	
 	}
 	return 0;
@@ -322,19 +326,24 @@ function updateMapVacancies()
 //do the main process in the game 
 function process_game(direction)
 {
+	if(touched){finish_count=0;}
 	//if still moves left or not
-	if(free_places.length>0)
+	if(!touched && finish_count==0 && free_places.length==0)
 	{
-		//1.do move action
-		moveBlocks(direction);
-
-		//2.generate number block
-		generateRandomNumBlock();
+		finish_count++;
 	}
-	else
+	else if(!touched && finish_count==1 && free_places.length==0)
 	{
 		gameOver();
+		return;
 	}
+	touched=false;
+	//1.do move action
+	moveBlocks(direction);
+
+	//2.generate number block
+	generateRandomNumBlock();
+
 }
 
 $(document).ready(function(){
@@ -360,5 +369,6 @@ $(document).ready(function(){
 		event.preventDefault();
 		//.initialize Game
 		initializeGame(4);
+		$('.Game_Over').hide();
 	});
 });
