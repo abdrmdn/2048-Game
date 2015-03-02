@@ -220,7 +220,6 @@ function updateBoardPlaces()
 		if($('.'+moves[key_i]).length>1){
 			setTimeout(function(){
 				$('.toRemove').remove();
-				//$('.newCombinedValue').text($('.newCombinedValue').attr('value')).removeClass('newCombinedValue');
 			 	},transition_speed);
 			//$($('.'+moves[key_i])[1]).addClass('toRemove').fadeOut(transition_speed*2,function(){$('.toRemove').remove();});
 		}
@@ -246,7 +245,7 @@ function moveBlocks(direction)
 	{	moveLeft();		}
 	else
 	{}
-$('.newCombinedValue').text($('.newCombinedValue').attr('value')).removeClass('newCombinedValue');
+	
 	//updateBoardPlaces();
 	updateMapVacancies();
 }
@@ -285,6 +284,11 @@ function generateRandomNumBlock()
 //this will generate an array of available blocks
 function updateMapVacancies()
 {
+	//clear all combined values
+	$.each($('.newCombinedValue'),function(index,val){
+		$(this).text($(this).attr('value')).removeClass('newCombinedValue');
+	});
+	//update places on metrix
 	free_places=new Array();index=0;
 	for (var i = 0; i < rows; i++) {
 		free_places_boolBoard[i]=new Array();
