@@ -31,7 +31,15 @@
 // /////////////////
 // /////////////////
 
+function calculateScore()
+{
+	score=0;
+	$.each($('.Game_Block .num_block'),function(){
+		score+=parseInt($(this).attr('value'));
+	});
+	$('.Game_Score .score').text(score);
 
+}
 
 //initialize the following for the Game::
 // game rows / columns
@@ -39,6 +47,9 @@
 // and generate two random blocks
 function initializeGame(numberOfRowBlock)
 {
+	//remove all blocks in the game 
+	$('.Game_Block .num_block').remove();
+
 	//rows and columns number
 	rows=numberOfRowBlock;
 	columns=numberOfRowBlock;
@@ -66,7 +77,9 @@ function checkSimilarity(current_block,next_block)
 	}
 	if(next_block.attr('value')==current_block.attr('value'))
 	{
-		new_val=next_block.attr('value')*2;
+		old_value=next_block.attr('value');
+		new_val=old_value*2;
+		numbers_allowed.push(old_value);
 		current_block.attr('value',new_val).addClass('newCombinedValue').addClass('toRemove');
 		next_block.attr('value',new_val).addClass('newCombinedValue');
 		next_block.animate({
@@ -251,13 +264,15 @@ function moveBlocks(direction)
 	
 	//updateBoardPlaces();
 	updateMapVacancies();
+	setTimeout(function(){calculateScore();},(transition_speed));
 }
 
 //this function  will show that there are no more moves to be added
 // the game has finished
 function gameOver()
 {
-	console.log('gameOver');
+	$('.Game_Over').fadeOut(500);
+    $('.Game_Over').fadeIn(500);
 }
 
 // this function wil generate a new random Number block in 
@@ -291,6 +306,7 @@ function updateMapVacancies()
 	$.each($('.newCombinedValue'),function(index,val){
 		$(this).text($(this).attr('value')).removeClass('newCombinedValue');
 	});
+
 	//update places on metrix
 	free_places=new Array();index=0;
 	for (var i = 0; i < rows; i++) {
@@ -340,4 +356,9 @@ $(document).ready(function(){
 		}
 	});
 
+	$('.Game_Replay').click(function(event){
+		event.preventDefault();
+		//.initialize Game
+		initializeGame(4);
+	});
 });
