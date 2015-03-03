@@ -254,6 +254,32 @@ function updateBoardPlaces()
 	moves=[];
 }
 
+function checkGameNotOver()
+{
+	for (i = 0 ; i < rows; i++) {
+			for (j = 0 ; j < rows; j++) {
+				this_block=$('.Game_Block .num_block.coords-'+i+'-'+j)
+				if(this_block.length==0)
+				{
+					continue;
+				}
+				blocks_near=new Array();
+				blocks_near.push($('.Game_Block .num_block.coords-'+(i-1)+'-'+(j)));
+				blocks_near.push($('.Game_Block .num_block.coords-'+(i+1)+'-'+(j)));
+				blocks_near.push($('.Game_Block .num_block.coords-'+ (i) +'-'+(j-1)));
+				blocks_near.push($('.Game_Block .num_block.coords-'+ (i) +'-'+(j+1)));
+				
+
+				for(k=0;k<blocks_near.length;k++)
+				{
+					if(blocks_near[k].length==0){continue;}
+					if(this_block.attr('value')==blocks_near[k].attr('value'))
+						{ return true; }
+				}
+			}
+	};
+	return false;
+}
 //this will take the moves and 
 //this function will be responsible for moving the blocks
 function moveBlocks(direction)
@@ -329,29 +355,27 @@ function updateMapVacancies()
 //do the main process in the game 
 function process_game(direction)
 {
-	if(touched){finish_count=0;}
-	//if still moves left or not
-	if(!touched && finish_count==0 && free_places.length==0)
-	{
-		finish_count++;
-	}
-	else if(!touched && finish_count==1 && free_places.length==0)
-	{
+	if(free_places.length==0 && !checkGameNotOver()){
 		gameOver();
-		return;
 	}
-
-	touched=false;
-	
-	//1.do move action
-	moveBlocks(direction);
-
-	if(moved_this_turn)
+	else
 	{
-		moved_this_turn=false;
-		//2.generate number block
-		generateRandomNumBlock();
+
+		//1.do move action
+		moveBlocks(direction);
+
+		if(moved_this_turn)
+		{
+			moved_this_turn=false;
+			//2.generate number block
+			generateRandomNumBlock();
+		}
+
+		if(free_places.length==0 && !checkGameNotOver()){
+		gameOver();
+		}
 	}
+	
 
 }
 
