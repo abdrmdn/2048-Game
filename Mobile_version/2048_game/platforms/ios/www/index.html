@@ -36,8 +36,10 @@
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/swipeupdown.js"></script>
 
+        <script src="js/2048_style_fixers.js" type="text/javascript"></script>
         <script src="js/2048_main_script.js" type="text/javascript"></script>
         <link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
         <!--  -->
         <title>Hello World</title>
     </head>
@@ -54,14 +56,19 @@
         </div>
         <!-- the Main Game Board -->
         <div class="Game_Block">
-            <a class="Game_Replay"> play again </a>
+            <a class="Game_Replay top_bar_blocks">
+            <span class="fa-stack fa-lg"><i class="fa fa-repeat fa-stack-1x"></i><i class="fa fa-circle-thin fa-stack-2x"></i></span>
+            </a>
+            <a class="Game_TopList top_bar_blocks">
+            <span class="fa-stack fa-lg"><i class="fa fa-list fa-stack-1x"></i><i class="fa fa-circle-thin fa-stack-2x"></i></span>
+            </a>
         </div>
         <div class="Game_Title">
-            THE 2048 GAME
-        </div>
-        <div class="Game_by">
+            <div class="Game_by">
             by <a href="https://www.linkedin.com/in/abdrmdn">ABIDUL WAHAB RAMADAN</a>
+            </div>
         </div>
+        
         <div class="Game_Over" style="display:none;">
             GAME OVER
         </div>

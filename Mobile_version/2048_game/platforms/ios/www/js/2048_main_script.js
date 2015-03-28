@@ -12,8 +12,8 @@
 	var cols=4;
 
 	//block size
-	var size='66px';
-	var blocks_size='68';
+	var size='23%';
+	//var blocks_size='23%';
 
 	//numbers array library
 	var numbers_allowed = new Array(2);
@@ -26,7 +26,7 @@
 	var moves=[];
 
 	//speed
-	transition_speed=200;
+	transition_speed=150;
 
 	//finish count 
 	finish_count=0
@@ -87,8 +87,8 @@ function checkSimilarity(current_block,next_block)
 		current_block.attr('value',new_val).addClass('newCombinedValue').addClass('toRemove');
 		next_block.attr('value',new_val).addClass('newCombinedValue');
 		next_block.animate({
-        width: '70px',height: '62px',margin:'1px'},(transition_speed/4),function(){
-		$(this).animate({width: '65px',height: '57px',margin:'6px'},(transition_speed/4));});
+        width: '26%',height: '25%',margin:'1px'},(transition_speed/4),function(){
+		$(this).animate({width: '23%',height: '22%',margin:'1%'},(transition_speed/4));});
 		touched=true;
 		return 1;	
 	}
@@ -380,6 +380,9 @@ function process_game(direction)
 }
 
 $(document).ready(function(){
+	
+	//fixing block size
+	blocks_size=$('.Game_Block').height()*0.24;
 	
 	//.initialize Game
 	initializeGame(4);
