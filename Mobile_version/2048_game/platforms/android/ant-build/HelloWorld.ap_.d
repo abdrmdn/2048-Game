@@ -50,6 +50,7 @@
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/2048_style_fixers.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/index.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/jquery-1.10.2.js \
+/Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/jquery.transit.min.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/swipeupdown.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/screen \

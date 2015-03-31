@@ -86,9 +86,9 @@ function checkSimilarity(current_block,next_block)
 		numbers_allowed.push(old_value);if(old_value>2)numbers_allowed.push(old_value/2);
 		current_block.attr('value',new_val).addClass('newCombinedValue').addClass('toRemove');
 		next_block.attr('value',new_val).addClass('newCombinedValue');
-		next_block.animate({
+		next_block.transition({
         width: '26%',height: '25%',margin:'1px'},(transition_speed/4),function(){
-		$(this).animate({width: '23%',height: '22%',margin:'1%'},(transition_speed/4));});
+		$(this).transition({width: '23%',height: '22%',margin:'1%'},(transition_speed/4));});
 		touched=true;
 		return 1;	
 	}
@@ -249,7 +249,7 @@ function updateBoardPlaces()
 		//$('.'+moves[key_i]).text($('.'+moves[key_i]).attr('value'));
 		console.log(key_i+" to "+moves[key_i]);
 		blockcls=moves[key_i].split('-');
-		obj.animate({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed);
+		obj.transition({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed);
 	};
 	moves=[];
 }
@@ -327,7 +327,7 @@ function generateRandomNumBlock()
 	clone.addClass('toGenerate');
 
 	//setTimeout(function(){},transition_speed);
-	clone.animate({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed,function(){$('.toGenerate').removeClass('toGenerate').show();});
+	clone.transition({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed,function(){$('.toGenerate').removeClass('toGenerate').show();});
 	//update the free places in the board
 	updateMapVacancies();
 }
