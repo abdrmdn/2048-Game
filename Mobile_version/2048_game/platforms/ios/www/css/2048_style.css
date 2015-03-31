@@ -22,6 +22,7 @@ a, a:hover, a:active, a:focus
 	top: 25%;
 	border-radius: 4px;
 	box-shadow: 6px 17px 86px -26px;
+	padding: 3px;
 }
 .Game_Title{
 	margin: auto;
@@ -46,6 +47,7 @@ a, a:hover, a:active, a:focus
 	font-size: 36px;
 	text-align: center;
 	color: #4F8699;
+	padding-top: 10px;
 }
 .Game_by a, .Game_by a:hover, .Game_by a:active, .Game_by a:visited{
 	padding-left: 1%;

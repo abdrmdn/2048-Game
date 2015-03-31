@@ -382,7 +382,7 @@ function process_game(direction)
 $(document).ready(function(){
 	
 	//fixing block size
-	blocks_size=$('.Game_Block').height()*0.24;
+	blocks_size=($('.Game_Block').height()*0.25)+1;
 	
 	//.initialize Game
 	initializeGame(4);
