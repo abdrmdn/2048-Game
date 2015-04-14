@@ -34,7 +34,6 @@
 	moved_this_turn=false;
 // /////////////////
 // /////////////////
-
 function calculateScore()
 {
 	score=0;
@@ -306,6 +305,12 @@ function gameOver()
 {
 	$('.Game_Over').fadeOut(500);
     $('.Game_Over').fadeIn(500);
+    //for parse
+    setUserId(getUserSocialID());
+    setUserName(getUserSocialName());
+    //alert(user_id+","+user_name+","+user_score+",");
+    processNewScore($('.Game_Score .score').text());
+    alert('over');
 }
 
 // this function wil generate a new random Number block in 
@@ -386,7 +391,7 @@ $(document).ready(function(){
 	
 	//.initialize Game
 	initializeGame(4);
-
+	
 	$('body').on('swipeleft',function(){var e=$.Event('keyup');e.which = 37;$('body').trigger(e);});
 	$('body').on('swipeup',function(){var e=$.Event('keyup');e.which = 38;$('body').trigger(e);});
 	$('body').on('swiperight',function(){var e=$.Event('keyup');e.which = 39;$('body').trigger(e);});
@@ -405,11 +410,18 @@ $(document).ready(function(){
 
 		}
 	});
-
+	
 	$('.Game_Replay').click(function(event){
 		event.preventDefault();
 		//.initialize Game
 		initializeGame(4);
 		$('.Game_Over').hide();
+	});
+	$('.Game_TopList').click(function(event){
+		event.preventDefault();
+		//.initialize leaderboard
+		checkLogin();
+		//checkLogin(false);
+		gameOver();
 	});
 });
