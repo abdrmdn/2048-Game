@@ -44,7 +44,7 @@ a, a:hover, a:active, a:focus
 	font-weight: bolder;
 }
 .Game_Score{
-	font-size: 36px;
+	font-size: 2em;
 	text-align: center;
 	color: #4F8699;
 	padding-top: 10px;
@@ -169,3 +169,43 @@ left:10px;
 
 
 */
+.fa-stack-1x{
+font-size: 0.9em;
+}
+.container{
+    width: 100%;
+    height: 70px;
+    margin: 0px auto;
+    position: absolute;
+    padding-top: 10px;
+}
+.prec{
+    top: 30px;
+    position: relative;
+    font-size: 0px;
+}
+
+.circle{
+    position: relative;
+    top: 5px;
+    left: 5px;
+    text-align: center;
+    width: 0px;
+    height: 0px;
+    border-radius: 100%;
+    background-color: #fff;
+}
+
+.active-border{
+    position: relative;
+    text-align: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+
+    background-color:#F9F9F9;
+    background-image:
+        linear-gradient(162deg, transparent 50%, #fff 50%),
+        linear-gradient(90deg, #fff 50%, transparent 50%);
+    
+}

@@ -32,6 +32,8 @@
 	finish_count=0
 	touched=false;
 	moved_this_turn=false;
+
+	gameOver_flag=false;
 // /////////////////
 // /////////////////
 function calculateScore()
@@ -50,6 +52,12 @@ function calculateScore()
 // and generate two random blocks
 function initializeGame(numberOfRowBlock)
 {
+	//remove flag
+	gameOver_flag=false;
+	//restart the percentage timer
+	restartTimer();
+	restartTimerSpeed();
+
 	//remove all blocks in the game 
 	$('.Game_Block .num_block').remove();
 
@@ -305,7 +313,8 @@ function gameOver()
 {
 	$('.Game_Over').fadeOut(500);
     $('.Game_Over').fadeIn(500);
-    
+    gameOver_flag=true;
+
     //for parse
     setUserId(getUserSocialID());
     setUserName(getUserSocialName());
@@ -359,7 +368,7 @@ function updateMapVacancies()
 //do the main process in the game 
 function process_game(direction)
 {
-	if(free_places.length==0 && !checkGameNotOver()){
+	if((free_places.length==0 && !checkGameNotOver() ) || gameOver_flag){
 		gameOver();
 	}
 	else
@@ -371,6 +380,7 @@ function process_game(direction)
 		if(moved_this_turn)
 		{
 			moved_this_turn=false;
+			increaseTimer();
 			//2.generate number block
 			generateRandomNumBlock();
 		}

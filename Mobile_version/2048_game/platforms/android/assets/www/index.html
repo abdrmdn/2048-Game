@@ -36,11 +36,13 @@
         <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script src="js/swipeupdown.js"></script>
         <script src="js/jquery.transit.min.js"></script>
+        
         <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/parse_controller.js"></script>
         <script type="text/javascript" src="js/socialConnector.js"></script>
         <script src="js/2048_style_fixers.js" type="text/javascript"></script>
         <script src="js/2048_main_script.js" type="text/javascript"></script>
+        <script type="text/javascript" src="js/percentage.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
         <!--  -->
@@ -56,12 +58,22 @@
         </div>
         <div class="Game_Score">
             YOUR SCORE <br> <span class="score">0</span> 
+            <div class="container">
+                <center>
+                <div id="activeBorder" class="active-border">
+                    <div id="circle" class="circle">
+                        <span class="prec 359" id="prec">100%</span>
+                    </div>
+                </div>
+                </center>
+            </div>
         </div>
         <!-- the Main Game Board -->
         <div class="Game_Block">
             <a class="Game_Replay top_bar_blocks">
             <span class="fa-stack fa-lg"><i class="fa fa-repeat fa-stack-1x"></i><i class="fa fa-circle-thin fa-stack-2x"></i></span>
             </a>
+            
             <a class="Game_TopList top_bar_blocks">
             <span class="fa-stack fa-lg"><i class="fa fa-list fa-stack-1x"></i><i class="fa fa-circle-thin fa-stack-2x"></i></span>
             </a>
