@@ -85,7 +85,8 @@ function checkLogin()
 			    	//init info
 	                user_facebook_id=result.id;
 					user_facebook_name=result.name;
-					alert('s');
+					setUserId(user_facebook_id);//in parse
+    				setUserName(user_facebook_name);//in parse
 			    },
 			    function (error) {
 			        alert("Failed: " + error);

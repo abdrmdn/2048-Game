@@ -1,6 +1,6 @@
 Parse.initialize("yx7Gv48rS6tpAyWxMPNk1PHPD5BI3CA9jyRLp31Z", "yiFRXc1fRQLXUUls8PTbldXQqWQeGy9fQa1cSRmy");
 
-user_id_var=0;
+user_id_var=-1;
 user_name_var='-';
 user_score_var=0;   
 
@@ -10,38 +10,51 @@ function setUserName(name_param){user_name_var=name_param;}
 
 function updateScore(data)
 {
-    $.each(res,function(index,val){
-        val.set('score',user_score_var);
-        val.save();
+    
+    $.each(data,function(index,val){
+        current_score=val.get('score');
+
+        if(parseInt(user_score_var)>parseInt(current_score)){
+          alert(current_score+'s / '+user_score_var+'s');
+          val.set('score',user_score_var);
+          val.save();
+        }
         });
 }
 
 function createNewScore()
 {
-      
       //create new one
-      var LeaderBoard = Parse.Object.extend("leader_board");
+      var LeaderBoard = Parse.Object.extend("leader_board_new");
       //to save
       var leader_board = new LeaderBoard();
-      leader_board.save({user_id: user_id_var,user_name:user_name_var,score:user_score_var});
+      arr={user_id: user_id_var,user_name:user_name_var,score:user_score_var};//user_id_var,user_name_var
+      alert(JSON.stringify(arr));
+      leader_board.save(arr);
 }
 
 //this function shall return true or false
 function processNewScore(score)
 {
+  if(user_id_var<1)
+    {
+      setTimeout(function(){ processNewScore(score);},500);
+      return false;
+    }
 
-  //set vars
+    
+    //set vars
     setUserScore(score);
     
-    var LeaderBoard = Parse.Object.extend("leader_board");
+    var LeaderBoard = Parse.Object.extend("leader_board_new");
     var leader_board = new LeaderBoard();
     //to retrieve 
     var query = new Parse.Query(LeaderBoard);
-    query.equalTo("user_id", user_id);
+    query.equalTo("user_id", user_id_var);
     query.find({success:function(res){
-      alert('res:'); 
       if(res.length>0){
         //update
+        
         updateScore(res);
       } else{
         //create new score
@@ -55,7 +68,7 @@ function processNewScore(score)
 //and return the result as an (id,name,score) array
 function getUserLeaderBoard(uid,friends)
 {
-    var LeaderBoard = Parse.Object.extend("leader_board");
+    var LeaderBoard = Parse.Object.extend("leader_board_new");
     var leader_board = new LeaderBoard();
     //to retrieve 
     var query = new Parse.Query(LeaderBoard);

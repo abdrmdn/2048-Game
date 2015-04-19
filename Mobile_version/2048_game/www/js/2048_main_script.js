@@ -305,12 +305,11 @@ function gameOver()
 {
 	$('.Game_Over').fadeOut(500);
     $('.Game_Over').fadeIn(500);
+    
     //for parse
     setUserId(getUserSocialID());
     setUserName(getUserSocialName());
-    //alert(user_id+","+user_name+","+user_score+",");
     processNewScore($('.Game_Score .score').text());
-    alert('over');
 }
 
 // this function wil generate a new random Number block in 
@@ -420,8 +419,13 @@ $(document).ready(function(){
 	$('.Game_TopList').click(function(event){
 		event.preventDefault();
 		//.initialize leaderboard
-		checkLogin();
+		//checkLogin();
+
 		//checkLogin(false);
 		gameOver();
 	});
+
+	//check login
+	setTimeout(function(){ checkLogin();},1000);
+	
 });
