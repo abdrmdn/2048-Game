@@ -66,12 +66,12 @@ degs = $("#prec").attr("class").split(' ')[1];
 activeBorder = $("#activeBorder");
 
 
-// setTimeout(function(){
-//     if(!played)
-//             loopit("c");
-//         else
-//             loopit("nc");
-// },1);
+setTimeout(function(){
+    if(!played)
+            loopit("c");
+        else
+            loopit("nc");
+},1);
 
 
 
