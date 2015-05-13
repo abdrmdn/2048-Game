@@ -3,7 +3,7 @@
 a web nice version of the Known Game 2048
 
 
-and #Mobile-version 
+and <h3>Mobile-version </h3>
 
 Android and IOS mobile version of the game using Phone-Gap
 
