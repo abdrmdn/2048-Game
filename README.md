@@ -7,7 +7,7 @@ and <h3>Mobile-version </h3>
 
 <b>Android</b> and <b>IOS</b> mobile version of the game using Phone-Gap
 
-u can find the Android version in the file <a href="https://github.com/abdrmdn/2048-Game/tree/master/Mobile_version" >Mobile_version</a>
+u can find the Android APK in the file <a href="https://github.com/abdrmdn/2048-Game/tree/master/Mobile_version" >Mobile_version</a>
 
 The App is using :
 <ul>
