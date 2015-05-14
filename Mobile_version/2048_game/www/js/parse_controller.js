@@ -3,11 +3,16 @@ Parse.initialize("yx7Gv48rS6tpAyWxMPNk1PHPD5BI3CA9jyRLp31Z", "yiFRXc1fRQLXUUls8P
 user_id_var=-1;
 user_name_var='-';
 user_score_var=0;   
+user_leaderBoard=new Array();
+user_leaderBoard_more=new Array();
+user_leaderBoard_less=new Array();
+user_leaderBoard_exact=new Array();
+loading_leaderBoard=false;
 
 function setUserId(id_param){user_id_var=id_param;}
 function setUserScore(score_param){user_score_var=score_param;}
 function setUserName(name_param){user_name_var=name_param;}
-
+function leaderBoardArray_getter(){while(loading_leaderBoard){} return user_leaderBoard_more;}
 function updateScore(data)
 {
     
@@ -66,20 +71,31 @@ function processNewScore(score)
 
 //this function will get the userid and check his place between his friends
 //and return the result as an (id,name,score) array
-function getUserLeaderBoard(uid,friends)
+function getUserLeaderBoard()
 {
+  
+  //check if user_id exist
+    if(user_id_var<1)
+      return null;
+    
+    // loading_leaderBoard=true;
+    user=new Array();
+    more=new Array();
+    less=new Array();
+
     var LeaderBoard = Parse.Object.extend("leader_board_new");
     var leader_board = new LeaderBoard();
+    
+
     //to retrieve 
     var query = new Parse.Query(LeaderBoard);
-    query.equalTo("user_id", user_id);
+    query.greaterThan("score", user_score_var);alert('asd'+user_score_var);
     query.find({success:function(res){
       if(res.length>0){
-        //update
-        updateScore(res);
+        alert(JSON.stringify(res));
+        loading_leaderBoard=false;
       } else{
-        //create new score
-        createNewScore();
+        
       }
     }});
     return true; 

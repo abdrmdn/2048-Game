@@ -306,6 +306,28 @@ function moveBlocks(direction)
 	updateMapVacancies();
 	setTimeout(function(){calculateScore();},(transition_speed));
 }
+//this function  will update the records in the 
+// the game has finished
+function updateLeaderBoardRecords()
+{
+	getUserLeaderBoard();
+	leaderBoard_array=leaderBoardArray_getter()
+    leaderBoard_array="";
+
+    //remove everything first
+    $('.name_block.name_block_active').remove();
+	//for each show records
+	for (var i = 0; i < 5; i++) {
+		name_block_clone=$('.name_block.clonable').clone().removeClass('clonable').addClass('name_block_active');
+		name_block_clone.find('.rank').text('rank');
+		name_block_clone.find('.name').text('name');
+		name_block_clone.find('.score').text('score');
+		name_block_clone.appendTo( $('.Game_Block_leader') );
+		$('.name_block_active').show();
+	};
+	
+
+}
 
 //this function  will show that there are no more moves to be added
 // the game has finished
@@ -319,6 +341,7 @@ function gameOver()
     setUserId(getUserSocialID());
     setUserName(getUserSocialName());
     processNewScore($('.Game_Score .score').text());
+    
 }
 
 // this function wil generate a new random Number block in 
@@ -430,9 +453,24 @@ $(document).ready(function(){
 		event.preventDefault();
 		//.initialize leaderboard
 		//checkLogin();
-
+		
+		gameOver_flag=true;
+    	updateLeaderBoardRecords();
+		$('.Game_Block').hide();
+		$('.Game_Over').hide();
+		$('.Game_Block_leader').show();
 		//checkLogin(false);
+		//gameOver();
+
+	});
+	$('.Game_TopList_Active').click(function(event){
+		event.preventDefault();
+		//.initialize leaderboard
+		//checkLogin();
 		gameOver();
+		$('.Game_Block_leader').hide();
+		$('.Game_Block').show();
+		// $('.Game_Over').show();
 	});
 
 	//check login

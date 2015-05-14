@@ -12,7 +12,7 @@ a, a:hover, a:active, a:focus
 	text-decoration: none;
 	color: black;
 }
-.Game_Block{
+.Game_Block, .Game_Block_leader{
 	position: relative;
 	background-color: #fff;
 	width: 95%;
@@ -72,7 +72,7 @@ font-weight: bolder;
 	  color: #D25B3A !important;
 	  float: left;
 }
-.Game_TopList{
+.Game_TopList, .Game_TopList_Active{
 	position: relative;
 	top: -21%;
 	right: 8%;
@@ -100,7 +100,29 @@ margin: 6px;
 border-radius: 5px;
 /* box-shadow: 1px 1px 1px #888; */
 }
-
+.name_block{
+width: 100%;
+height: 23px;
+position: relative;
+top: 0px;
+right: 0px;
+font-size: 1.1em;
+color: #F9F9F9;
+text-align: center;
+padding-top: 2%;
+padding-bottom: 2%;
+margin-top: 2px;
+border-radius: 3px;
+background-color: #0AABBA;
+float:left;
+}
+.name_block.user{
+	opacity: 1;
+	background-color: #F04158;
+}
+ .name_block div{
+  display: inline-block;
+  }
 .doublesize{
 	width: 3em;
 	height: 2em;
