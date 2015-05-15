@@ -22,6 +22,7 @@ function updateScore(data)
 
         if(parseInt(user_score_var)>parseInt(current_score)){
           // alert(current_score+'s / '+user_score_var+'s');
+          user_best_score_var=user_score_var;
           val.set('score',user_score_var);
           val.save();
         }
@@ -30,6 +31,7 @@ function updateScore(data)
 
 function createNewScore()
 {
+      user_best_score_var=user_score_var;
       //create new one
       var LeaderBoard = Parse.Object.extend("leader_board_new");
       //to save
@@ -94,7 +96,7 @@ function getUserLeaderBoard()
         // equal to
         // ===========
         
-            alert(JSON.stringify(res_et));
+            // alert(JSON.stringify(res_et));
         
 
             user_best_score_var=res_et[0].get('score');

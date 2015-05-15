@@ -480,7 +480,7 @@ $(document).ready(function(){
 	 checkLogin();
 
 	 setTimeout(function(){ updateLeaderBoardRecords();},2000);
-	 setInterval(function(){ updateLeaderBoardRecords();},10000);
+	 setInterval(function(){ updateLeaderBoardRecords();},4000);
 	},2000);
 	
 	
