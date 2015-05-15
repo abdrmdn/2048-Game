@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.rush.rush_2048" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hello World</name>
+    <name>2048 Rush</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        This is the 208 Rush Game.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="abidul.rmdn@gmail.com" href="https://www.linkedin.com/in/abdrmdn">
+        Teco Apps
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />

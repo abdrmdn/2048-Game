@@ -9,12 +9,12 @@
     <access origin="https://api.facebook.com" />
     <access origin="https://*.fbcdn.net" />
     <access origin="https://*.akamaihd.net" />
-    <name>Hello World</name>
+    <name>2048 Rush</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        This is the 208 Rush Game.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="abidul.rmdn@gmail.com" href="https://www.linkedin.com/in/abdrmdn">
+        Teco Apps
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />

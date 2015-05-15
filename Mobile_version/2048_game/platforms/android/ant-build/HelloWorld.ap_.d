@@ -300,6 +300,7 @@
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/bada-wac/icon-50-type3.png \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/bada-wac/icon-80-type4.png \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/blackberry/icon-80.png \
+/Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/ios/_icon-72.png \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/ios/icon-57-2x.png \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/ios/icon-57.png \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon/ios/icon-72-2x.png \
