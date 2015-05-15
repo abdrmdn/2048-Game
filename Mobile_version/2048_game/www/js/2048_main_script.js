@@ -311,20 +311,21 @@ function moveBlocks(direction)
 function updateLeaderBoardRecords()
 {
 	getUserLeaderBoard();
-	leaderBoard_array=leaderBoardArray_getter()
+	leaderBoard_array=leaderBoardArray_getter();
     leaderBoard_array="";
 
-    //remove everything first
-    $('.name_block.name_block_active').remove();
-	//for each show records
-	for (var i = 0; i < 5; i++) {
-		name_block_clone=$('.name_block.clonable').clone().removeClass('clonable').addClass('name_block_active');
-		name_block_clone.find('.rank').text('rank');
-		name_block_clone.find('.name').text('name');
-		name_block_clone.find('.score').text('score');
-		name_block_clone.appendTo( $('.Game_Block_leader') );
-		$('.name_block_active').show();
-	};
+
+ //    //remove everything first
+ //    $('.name_block.name_block_active').remove();
+	// //for each show records
+	// for (var i = 0; i < 5; i++) {
+	// 	name_block_clone=$('.name_block.clonable').clone().removeClass('clonable').addClass('name_block_active');
+	// 	name_block_clone.find('.rank').text('rank');
+	// 	name_block_clone.find('.name').text('name');
+	// 	name_block_clone.find('.score').text('score');
+	// 	name_block_clone.appendTo( $('.Game_Block_leader') );
+	// 	$('.name_block_active').show();
+	// };
 	
 
 }
@@ -333,8 +334,7 @@ function updateLeaderBoardRecords()
 // the game has finished
 function gameOver()
 {
-	$('.Game_Over').fadeOut(500);
-    $('.Game_Over').fadeIn(500);
+	$('.Game_Over').slideDown();
     gameOver_flag=true;
 
     //for parse
@@ -447,7 +447,7 @@ $(document).ready(function(){
 		event.preventDefault();
 		//.initialize Game
 		initializeGame(4);
-		$('.Game_Over').hide();
+		$('.Game_Over').slideUp();
 	});
 	$('.Game_TopList').click(function(event){
 		event.preventDefault();
@@ -455,10 +455,12 @@ $(document).ready(function(){
 		//checkLogin();
 		
 		gameOver_flag=true;
-    	updateLeaderBoardRecords();
+    	// updateLeaderBoardRecords();
 		$('.Game_Block').hide();
-		$('.Game_Over').hide();
+		$('.Game_Over').slideUp();
+		$('.percentage_container').css('opacity',0);
 		$('.Game_Block_leader').show();
+
 		//checkLogin(false);
 		//gameOver();
 
@@ -470,10 +472,16 @@ $(document).ready(function(){
 		gameOver();
 		$('.Game_Block_leader').hide();
 		$('.Game_Block').show();
-		// $('.Game_Over').show();
+		$('.percentage_container').css('opacity',1);
 	});
 
 	//check login
-	setTimeout(function(){ checkLogin();},1000);
+	setTimeout(function(){
+	 checkLogin();
+
+	 setTimeout(function(){ updateLeaderBoardRecords();},2000);
+	 setInterval(function(){ updateLeaderBoardRecords();},10000);
+	},1000);
+	
 	
 });

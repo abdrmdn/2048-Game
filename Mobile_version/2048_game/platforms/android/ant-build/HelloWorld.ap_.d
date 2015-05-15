@@ -257,6 +257,7 @@
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/spec \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/spec.html \
+/Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/css/(($('.Game_Title').position().top)+$('.Game_Title' \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/css/2048_style.css \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/css/font-awesome.min.css \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/css/index.css \

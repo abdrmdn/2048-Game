@@ -1,0 +1,1 @@
+padding_game_title=($('body').height()-(oarseInt($('.Game_Title').position().top)+oarseInt($('.Game_Title').css('font-size'))));
