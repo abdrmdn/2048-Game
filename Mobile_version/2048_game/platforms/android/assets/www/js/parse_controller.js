@@ -21,7 +21,7 @@ function updateScore(data)
         current_score=val.get('score');
 
         if(parseInt(user_score_var)>parseInt(current_score)){
-          alert(current_score+'s / '+user_score_var+'s');
+          // alert(current_score+'s / '+user_score_var+'s');
           val.set('score',user_score_var);
           val.save();
         }
@@ -35,7 +35,6 @@ function createNewScore()
       //to save
       var leader_board = new LeaderBoard();
       arr={user_id: user_id_var,user_name:user_name_var,score:user_score_var};//user_id_var,user_name_var
-      alert(JSON.stringify(arr));
       leader_board.save(arr);
 }
 
@@ -60,7 +59,6 @@ function processNewScore(score)
     query.find({success:function(res){
       if(res.length>0){
         //update
-        
         updateScore(res);
       } else{
         //create new score
@@ -96,7 +94,7 @@ function getUserLeaderBoard()
         // equal to
         // ===========
         
-            // alert(JSON.stringify(res_et));
+            alert(JSON.stringify(res_et));
         
 
             user_best_score_var=res_et[0].get('score');
@@ -107,16 +105,14 @@ function getUserLeaderBoard()
             query.ascending("score");
             query.limit(2);
             query.find({success:function(res_gt){
-              if(res_gt.length>0){
+              
                 // Greater Than
                 // ===========
 
                   //register more
-                  // $.each(res_gt,function(index,val){
-                    for (var i = res_gt.length - 1; i >= 0; i--) {
-                      user_leaderBoard.push({user_name : res_gt[i].get('user_name'),score : res_gt[i].get('score')});
-                    };
-                  // });
+                  for (var i = res_gt.length - 1; i >= 0; i--) {
+                    user_leaderBoard.push({user_name : res_gt[i].get('user_name'),score : res_gt[i].get('score')});
+                  };
                   //register exact
                   user_leaderBoard.push({user_name : user_name_var, score : user_best_score_var, is_user: true});
 
@@ -126,10 +122,10 @@ function getUserLeaderBoard()
                   query.descending("score");
                   query.limit(2);
                   query.find({success:function(res_lt){
-                    if(res_lt.length>0){
+                    
                       // less Than
                       // ===========
-                      
+
                       $.each(res_lt,function(index,val){
                         user_leaderBoard.push({user_name : val.get('user_name'),score : val.get('score')});
                       });
@@ -147,17 +143,13 @@ function getUserLeaderBoard()
                       });
 
                       loading_leaderBoard=false;
-                    } else{
-                      
-                    }
+                    
 
                   }});
                   //*/
                   
                   // ===========
-              } else{
-                
-              }
+              
             }});
         // ===========
 

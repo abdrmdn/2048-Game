@@ -340,7 +340,7 @@ function gameOver()
     //for parse
     setUserId(getUserSocialID());
     setUserName(getUserSocialName());
-    processNewScore($('.Game_Score .score').text());
+    processNewScore(parseInt($('.Game_Score .score').text()));
     
 }
 
@@ -455,7 +455,7 @@ $(document).ready(function(){
 		//checkLogin();
 		
 		gameOver_flag=true;
-    	// updateLeaderBoardRecords();
+    	updateLeaderBoardRecords();
 		$('.Game_Block').hide();
 		$('.Game_Over').slideUp();
 		$('.percentage_container').css('opacity',0);
@@ -481,7 +481,7 @@ $(document).ready(function(){
 
 	 setTimeout(function(){ updateLeaderBoardRecords();},2000);
 	 setInterval(function(){ updateLeaderBoardRecords();},10000);
-	},1000);
+	},2000);
 	
 	
 });
