@@ -25,7 +25,7 @@ var fbLoginSuccess = function (userData)
 		//get info
 		facebookConnectPlugin.api("me/?fields=id,email", ["public_profile"],
 	    function (result) {
-	        alert("Result: " + JSON.stringify(result));
+	        // alert("Result: " + JSON.stringify(result));
 	    },
 	    function (error) {
 	        alert("Failed: " + error);
@@ -34,7 +34,7 @@ var fbLoginSuccess = function (userData)
 	}
 	else
 	{
-		alert("UserInfo: " + JSON.stringify(userData));
+		// alert("UserInfo: " + JSON.stringify(userData));
 	}
     //alert("UserInfo: " + JSON.stringify(userData));
 }
@@ -53,7 +53,7 @@ function social_getfriends()
 {
 	facebookConnectPlugin.api("me/friends?fields=id,name", ["user_friends"],
 	    function (result) {
-	        alert("Result: " + JSON.stringify(result.data));
+	        // alert("Result: " + JSON.stringify(result.data));
 	        
 	    },
 	    function (error) {
