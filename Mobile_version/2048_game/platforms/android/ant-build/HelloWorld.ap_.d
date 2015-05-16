@@ -279,6 +279,7 @@
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/percentage.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/socialConnector.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/swipeupdown.js \
+/Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/js/untitled \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/plugins/com.phonegap.plugins.facebookconnect \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/plugins/com.phonegap.plugins.facebookconnect/facebookConnectPlugin.js \
 /Users/abidul/www/2048-Game/Mobile_version/2048_game/platforms/android/assets/www/res/icon \

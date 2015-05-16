@@ -424,9 +424,11 @@ $(document).ready(function(){
 	//.initialize Game
 	initializeGame(4);
 	
-	$('body').on('swipeleft',function(){var e=$.Event('keyup');e.which = 37;$('body').trigger(e);});
+	//$('body').on('swipeleft',function(){var e=$.Event('keyup');e.which = 37;$('body').trigger(e);});
+	$('body').on('swipeleft_custom',function(){var e=$.Event('keyup');e.which = 37;$('body').trigger(e);});
 	$('body').on('swipeup',function(){var e=$.Event('keyup');e.which = 38;$('body').trigger(e);});
-	$('body').on('swiperight',function(){var e=$.Event('keyup');e.which = 39;$('body').trigger(e);});
+	//$('body').on('swiperight',function(){var e=$.Event('keyup');e.which = 39;$('body').trigger(e);});
+	$('body').on('swiperight_custom',function(){var e=$.Event('keyup');e.which = 39;$('body').trigger(e);});
 	$('body').on('swipedown',function(){var e=$.Event('keyup');e.which = 40;$('body').trigger(e);});
 	
 	//get the event from the keyboard for the game 
