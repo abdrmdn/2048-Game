@@ -31,7 +31,7 @@ function loopit(dir){
             hx2=(((i)/15)+5).toString(16).split('.')[0];
             hx3=(((i)/15)+1).toString(16).split('.')[0];
             color="#F"+hx+"A"+hx2+"3"+hx3;
-            console.log(color);
+            
         }
         else{
             activeBorder.css('background-image','linear-gradient(' + (i-90) + 'deg, transparent 50%, #F9F9F9 50%),linear-gradient(90deg, '+color+' 50%, transparent 50%)');

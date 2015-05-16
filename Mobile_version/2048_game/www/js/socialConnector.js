@@ -18,14 +18,15 @@ var fbLoginSuccess = function (userData)
 	{
 		//alert('accessToken='+userData.authResponse.accessToken);
 		user_facebook_id=userData.authResponse.userID;
+		//alert(''+JSON.stringify(userData.authResponse));
 		//user_facebook_name=userData.authResponse.userName;
 		user_access_token=userData.authResponse.accessToken;
 		
 
 		//get info
-		facebookConnectPlugin.api("me/?fields=id,email", ["public_profile"],
+		facebookConnectPlugin.api("me/?fields=id,email,name", ["public_profile"],
 	    function (result) {
-	        // alert("Result: " + JSON.stringify(result));
+	         //alert("Result: " + JSON.stringify(result));
 	    },
 	    function (error) {
 	        alert("Failed: " + error);
@@ -82,6 +83,7 @@ function checkLogin()
 
                 facebookConnectPlugin.api("me?fields=name,id", ['public_profile'],
 			    function (result) {
+			    	// alert("Result: " + JSON.stringify(result));
 			    	//init info
 	                user_facebook_id=result.id;
 					user_facebook_name=result.name;
