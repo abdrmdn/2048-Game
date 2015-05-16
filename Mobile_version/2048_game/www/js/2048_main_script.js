@@ -254,7 +254,7 @@ function updateBoardPlaces()
 			//$($('.'+moves[key_i])[1]).addClass('toRemove').fadeOut(transition_speed*2,function(){$('.toRemove').remove();});
 		}
 		//$('.'+moves[key_i]).text($('.'+moves[key_i]).attr('value'));
-		console.log(key_i+" to "+moves[key_i]);
+		//console.log(key_i+" to "+moves[key_i]);
 		blockcls=moves[key_i].split('-');
 		obj.transition({'top':(blockcls[1]*blocks_size)+'px', 'left':(blockcls[2]*blocks_size)+'px'},transition_speed);
 	};
@@ -433,7 +433,7 @@ $(document).ready(function(){
 	
 	//get the event from the keyboard for the game 
 	$('body').keyup(function(event){
-		console.log(event.which);
+		//console.log(event.which);
 		if(event.which>36 && event.which<41)
 		{
 			direction=direction_codes[""+event.which];

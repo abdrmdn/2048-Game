@@ -36,7 +36,7 @@ a, a:hover, a:active, a:focus
 .Game_Over{
 	position: absolute;
 	bottom: 0px;
-	font-size: 60pt;
+	font-size: 34vw;
 	text-align: center;
 	width: 100%;
 	background-color: #F04158;
