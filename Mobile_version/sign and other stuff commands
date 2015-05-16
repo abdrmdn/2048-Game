@@ -1,4 +1,0 @@
-keytool -genkey -v -keystore release_key_name.keystore -alias 2048_rush_game -keyalg RSA -keysize 2048 -validity 10000
-
-sudo jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release_key_name.keystore  HelloWorld-release-unsigned.apk 2048_rush_game
-
