@@ -457,7 +457,7 @@ $(document).ready(function(){
 		//checkLogin();
 		
 		gameOver_flag=true;
-    	updateLeaderBoardRecords();
+    	// updateLeaderBoardRecords();
 		$('.Game_Block').hide();
 		$('.Game_Over').slideUp();
 		$('.percentage_container').css('opacity',0);
@@ -482,7 +482,7 @@ $(document).ready(function(){
 	 checkLogin();
 
 	 setTimeout(function(){ updateLeaderBoardRecords();},2000);
-	 setInterval(function(){ updateLeaderBoardRecords();},4000);
+	 setInterval(function(){ updateLeaderBoardRecords();},5000);
 	},2000);
 	
 	

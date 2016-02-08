@@ -83,7 +83,7 @@ function checkLogin()
 
                 facebookConnectPlugin.api("me?fields=name,id", ['public_profile'],
 			    function (result) {
-			    	alert("Result: " + JSON.stringify(result));
+			    	// alert("Result: " + JSON.stringify(result));
 			    	//init info
 	                user_facebook_id=result.id;
 					user_facebook_name=result.name;
